@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" != "" ]; then
+	if [ -d $1-ramdisk ]; then
+		rm  -r $1-ramdisk
+	fi
+	./split_bootimg.pl $1
+	mkdir $1-ramdisk && cd $1-ramdisk && gzip -dc ../$1-ramdisk.gz | cpio -i
+fi

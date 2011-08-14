@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" != "" ]; then
+	if [ -d $1-ramdisk ] && [ -e $1-kernel ]; then
+		cd $1-ramdisk
+		find . | cpio --quiet -o -H newc | gzip > ../$1-ramdisk-new.gz
+		cd ..
+		./mkbootimg --kernel $1-kernel --ramdisk $1-ramdisk-new.gz --cmdline " mem=214M console=ttyMSM2,115200n8 androidboot.hardware=swift" -o `basename $1 .img`-new.img --base 0x200000
+	fi
+fi
+
