@@ -1,0 +1,22 @@
+This is not my scripts, I found them on net, and I want to thank to author :)
+
+Using:
+
+*** Extracting ***
+
+1) Place a working boot.img into this folder
+2) Type:
+
+$ ./extract_boot boot.img
+
+3) Done. Now you can see a boot.img-kernel (zImage) and a ramdisk on extracted boot.
+
+
+*** Repacking ***
+
+1) After you done making changes on kernel/ramdisk, type:
+
+$ ./make_boot boot.img
+
+2) Done. Now you can see and flash your new boot named "boot-new.img"
+
